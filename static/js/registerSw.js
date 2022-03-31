@@ -64,18 +64,17 @@ const subscribe = async (reg) => {
 
 const sendSubData = async (subscription) => {
     const browser = navigator.userAgent.match(/(firefox|msie|chrome|safari|trident)/ig)[0].toLowerCase();
-
+    console.log(subscription)
     const data = {
-        status_type: 'subscribe',
-        subscription: subscription.toJSON(),
-        browser: browser,
+        subscription: JSON.stringify(subscription),
+        ruel: 'daryna rule',
     };
 
     console.log(data.subscription)
 
-    const res = await fetch('/webpush/save_information', {
+    const res = await fetch('/subscribe', {
         method: 'POST',
-        body: JSON.stringify(data),
+        body: data,
         headers: {
             'content-type': 'application/json'
         },
