@@ -1,5 +1,10 @@
 const pushForm = document.getElementById('send-push__form');
 const errorMsg = document.querySelector('.error');
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
 
 pushForm.addEventListener('submit', async function (e) {
     e.preventDefault();
@@ -16,12 +21,13 @@ pushForm.addEventListener('submit', async function (e) {
     if (head && body && id) {
         button.innerText = 'Sending...';
         button.disabled = true;
-
+        const csrftoken = getCookie('csrftoken');
         const res = await fetch('/send_push', {
             method: 'POST',
             body: JSON.stringify({head, body, rule: 'daryna rule'}),
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                'X-CSRFToken': csrftoken,
             }
         });
         if (res.status === 200) {

@@ -62,6 +62,12 @@ const subscribe = async (reg) => {
     sendSubData(sub)
 };
 
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
 const sendSubData = async (subscription) => {
     const browser = navigator.userAgent.match(/(firefox|msie|chrome|safari|trident)/ig)[0].toLowerCase();
     const subscriptionObj = JSON.parse(JSON.stringify(subscription))
@@ -77,13 +83,14 @@ const sendSubData = async (subscription) => {
         rule: 'daryna rule',
     };
 
-    console.log(data.subscription)
+    const csrftoken = getCookie('csrftoken');
 
     const res = await fetch('/subscribe', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
-            'content-type': 'application/json'
+            'content-type': 'application/json',
+            'X-CSRFToken': csrftoken,
         },
         credentials: "include"
     });

@@ -15,12 +15,8 @@ ALLOWED_HOSTS = ['push-notifications-service.herokuapp.com', '127.0.0.1']
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dcn92of20t4uu3',
-        "USER": 'ykwftgkbpibmxo',
-        "PASSWORD": '6ef2c23ac2e605bb33b82f0786be10665629d29e4862a6e617d4890477d1bb52',
-        'HOST': 'ec2-34-231-63-30.compute-1.amazonaws.com',
-        'PORT':'5432'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 

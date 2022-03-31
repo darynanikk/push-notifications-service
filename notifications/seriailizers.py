@@ -4,6 +4,10 @@ from notifications.models import UserSubscription
 
 
 class SubscriptionSerializer(ModelSerializer):
+
+    def create(self):
+        return SubscriptionInfo(**self.validated_data)
+
     class Meta:
         model = SubscriptionInfo
         fields = "__all__"
