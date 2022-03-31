@@ -1,5 +1,10 @@
 const pushForm = document.getElementById('send-push__form');
 const errorMsg = document.querySelector('.error');
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
 
 pushForm.addEventListener('submit', async function (e) {
     e.preventDefault();
