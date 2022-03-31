@@ -25,6 +25,18 @@
         <button>Send Me</button>
     </form>
 </div>
+<script>
+    function makeid() {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for (var i = 0; i < 5; i++)
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+        return text;
+    }
+    window.rule = makeid();
+</script>
 <script src="{% static '/js/registerSw.js' %}"></script>
 <script src="{% static '/js/site.js' %}"></script>
 </body>
