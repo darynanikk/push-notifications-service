@@ -65,9 +65,15 @@ const subscribe = async (reg) => {
 const sendSubData = async (subscription) => {
     const browser = navigator.userAgent.match(/(firefox|msie|chrome|safari|trident)/ig)[0].toLowerCase();
     console.log(subscription)
+    const preparedSubscription = {
+        endpoint: subscription.endpoint,
+        broswer: browser,
+        p256dh: subscription.keys.p256dh,
+        auth: subscription.keys.auth,
+    }
     const data = {
-        subscription: JSON.stringify(subscription),
-        ruel: 'daryna rule',
+        subscription: JSON.stringify(preparedSubscription),
+        rule: 'daryna rule',
     };
 
     console.log(data.subscription)
