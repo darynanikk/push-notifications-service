@@ -13,6 +13,18 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['push-notifications-service.herokuapp.com']
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+WEBPUSH_SETTINGS = {
+   "VAPID_PUBLIC_KEY": "BJthRQ5myDgc7OSXzPCMftGw-n16F7zQBEN7EUD6XxcfTTvrLGWSIG7y_JxiWtVlCFua0S8MTB5rPziBqNx1qIo",
+   "VAPID_PRIVATE_KEY": "3KzvKasA2SoCxsp0iIG_o9B0Ozvl1XDwI63JRKNIWBM",
+   "VAPID_ADMIN_EMAIL": "daryna-admin@example.com"
+}
 
 # Application definition
 
@@ -65,17 +77,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'myproject.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -97,12 +98,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
-
-WEBPUSH_SETTINGS = {
-   "VAPID_PUBLIC_KEY": "SECRET",
-   "VAPID_PRIVATE_KEY": "SECRET",
-   "VAPID_ADMIN_EMAIL": "daryna-admin@example.com"
-}
 
 LANGUAGE_CODE = 'en-us'
 
@@ -126,7 +121,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static_root")
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 FCM_DJANGO_SETTINGS = {
-        "FCM_SERVER_KEY": "SECRET"
+        "FCM_SERVER_KEY": "AAAA-eH6jNY:APA91bGKHkaAzDLFysNCiMQf7A20dPObR0B40CDjN0HykYEp4o3V214KUPzoWOnXauNIdPYs1t3UcBDfo01Wa4DkC_QWPKH4PFhz14gDR2GHWwQ7vitmLOV590PsUbMzo0JI8IgPXkbc"
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -134,7 +129,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
-    "SECRET",
+    "http://localhost:8001",
 ]
 
 
@@ -148,5 +143,3 @@ REST_FRAMEWORK = {
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-from .local_settings import *
