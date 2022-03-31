@@ -24,12 +24,29 @@ def home(request):
 def send_push(request):
     data = request.data
 
-    if 'head' not in data or 'body' not in data or 'rule' not in data:
+    if 'rule' not in data:
         return Response({"message": "Invalid data format"}, status=status.HTTP_400_BAD_REQUEST)
 
-    rule = data['rule']
+    rule = data['rule']['name']
 
-    payload = {'head': data['head'], 'body': data['body']}
+    message = f"""
+        {data['trigger']['name']} triggered.
+        Rule Name: {rule}
+        C9015384 test Rule description.
+        Trigger Name: {data['trigger']['name']}
+        {data['trigger']['description']}
+        Destination Name: {data['destination']['name']}
+        Event Summary
+        {data['event']['summary']}
+        Event Severity
+        {data['event']['severity']}
+        Event Status
+        {data['event']['status']}
+        Event Acknowledged
+        {data['event']['acknowledged']}
+    """
+
+    payload = {'head': 'Web Push Destination', 'body': message}
 
     try:
         user_subscription = UserSubscription.objects.values_list('subscription', flat=True).get(rule=rule)
