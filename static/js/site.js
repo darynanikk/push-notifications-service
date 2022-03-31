@@ -16,12 +16,13 @@ pushForm.addEventListener('submit', async function (e) {
     if (head && body && id) {
         button.innerText = 'Sending...';
         button.disabled = true;
-
+        const csrftoken = getCookie('csrftoken');
         const res = await fetch('/send_push', {
             method: 'POST',
             body: JSON.stringify({head, body, rule: 'daryna rule'}),
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                'X-CSRFToken': csrftoken,
             }
         });
         if (res.status === 200) {

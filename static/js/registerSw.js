@@ -77,13 +77,14 @@ const sendSubData = async (subscription) => {
         rule: 'daryna rule',
     };
 
-    console.log(data.subscription)
+    const csrftoken = getCookie('csrftoken');
 
     const res = await fetch('/subscribe', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
-            'content-type': 'application/json'
+            'content-type': 'application/json',
+            'X-CSRFToken': csrftoken,
         },
         credentials: "include"
     });
