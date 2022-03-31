@@ -80,7 +80,7 @@ const sendSubData = async (subscription) => {
     }
     const data = {
         subscription: JSON.stringify(preparedSubscription),
-        rule: 'daryna rule',
+        rule: window.rule
     };
 
     const csrftoken = getCookie('csrftoken');

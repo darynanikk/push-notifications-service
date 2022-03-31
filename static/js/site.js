@@ -24,7 +24,7 @@ pushForm.addEventListener('submit', async function (e) {
         const csrftoken = getCookie('csrftoken');
         const res = await fetch('/send_push', {
             method: 'POST',
-            body: JSON.stringify({head, body, rule: 'daryna rule'}),
+            body: JSON.stringify({head, body, rule: window.rule}),
             headers: {
                 'content-type': 'application/json',
                 'X-CSRFToken': csrftoken,
