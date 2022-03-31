@@ -6,17 +6,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "SECRET"
+SECRET_KEY = 'django-insecure-y2@@@b5cya%-h-bh=&&d!)ao06w674hctm(y%en%h(i!b)e_cv'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['push-notifications-service.herokuapp.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['push-notifications-service.herokuapp.com', '127.0.0.1']
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dcn92of20t4uu3',
+        "USER": 'ykwftgkbpibmxo',
+        "PASSWORD": '6ef2c23ac2e605bb33b82f0786be10665629d29e4862a6e617d4890477d1bb52',
+        'HOST': 'ec2-34-231-63-30.compute-1.amazonaws.com',
+        'PORT':'5432'
     }
 }
 
