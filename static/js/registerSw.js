@@ -66,6 +66,7 @@ const sendSubData = async (subscription) => {
     const browser = navigator.userAgent.match(/(firefox|msie|chrome|safari|trident)/ig)[0].toLowerCase();
     const subscriptionObj = JSON.parse(JSON.stringify(subscription))
     const preparedSubscription = {
+        id: 1,
         endpoint: subscriptionObj.endpoint,
         broswer: browser,
         p256dh: subscriptionObj.keys.p256dh,
