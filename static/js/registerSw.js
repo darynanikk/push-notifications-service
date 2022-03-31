@@ -72,15 +72,14 @@ const sendSubData = async (subscription) => {
     const browser = navigator.userAgent.match(/(firefox|msie|chrome|safari|trident)/ig)[0].toLowerCase();
     const subscriptionObj = JSON.parse(JSON.stringify(subscription))
     const preparedSubscription = {
-        id: 1,
         endpoint: subscriptionObj.endpoint,
-        broswer: browser,
+        browser: browser,
         p256dh: subscriptionObj.keys.p256dh,
         auth: subscriptionObj.keys.auth,
     }
     const data = {
         subscription: JSON.stringify(preparedSubscription),
-        rule: 'daryna rule',
+        rule: window.rule
     };
 
     const csrftoken = getCookie('csrftoken');
