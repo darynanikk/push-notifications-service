@@ -80,7 +80,7 @@ const sendSubData = async (subscription) => {
 
     const res = await fetch('/subscribe', {
         method: 'POST',
-        body: data,
+        body: JSON.stringify(data),
         headers: {
             'content-type': 'application/json'
         },
