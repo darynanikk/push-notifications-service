@@ -19,7 +19,7 @@ pushForm.addEventListener('submit', async function (e) {
 
         const res = await fetch('/send_push', {
             method: 'POST',
-            body: JSON.stringify({head, body, id}),
+            body: JSON.stringify({head, body, rule: 'daryna rule'}),
             headers: {
                 'content-type': 'application/json'
             }
