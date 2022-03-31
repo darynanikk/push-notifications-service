@@ -37,7 +37,7 @@ def send_push(request):
         return Response({"message": "Invalid data"}, status=status.HTTP_404_NOT_FOUND)
     serializer = SubscriptionSerializer(data=json.loads(user_subscription))
     if serializer.is_valid():
-        subscription = serializer.save()
+        subscription = serializer.create()
         send_to_subscription(subscription, json.dumps(payload))
         return Response({"message": "Web push successful"}, status=status.HTTP_200_OK)
     return Response({"message": "An error occurred"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
