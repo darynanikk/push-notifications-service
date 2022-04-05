@@ -1,43 +1,84 @@
-{% load static %}
-<!DOCTYPE html>
+!<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="vapid-key" content="{{ vapid_key }}">
-    {% if user.id %}
-        <meta name="user_id" content="{{ user.id }}">
-    {% endif %}
-    <title>Web Push</title>
-    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
-    <link href="{% static '/css/styles.css' %}" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Template Site</title>
+
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+<!-- Google fonts -->
+<link href="https://fonts.googleapis.com/css?family=Crimson+Text|Dancing+Script" rel="stylesheet">
+
 </head>
-
 <body>
+
+<style>
+/* CSS */
+
+/* paragraph CSS */
+p {
+text-align: justify;
+font-family: 'Crimson Text', serif;
+font-size: 18px;
+}
+
+/* Master of Wisdom paragraph CSS */
+p.masterOfWisdom {
+font-family: 'Dancing Script', cursive;
+font-size: 30px;
+}
+
+/* header CSS */
+h1 {
+font-family: 'Dancing Script', cursive;
+}
+
+/* img CSS */
+img.responsive-img {
+max-width: 50%;
+height: auto;
+float: none;
+margin: auto;
+margin-top: 5%;
+display:block;
+}
+
+</style>
+
 <div>
-    <form id="send-push__form">
-        <h3 class="header">Send a push notification</h3>
-        <p class="error"></p>
-        <input type="text" name="head" placeholder="Header: Your favorite airline 😍">
-        <textarea name="body" id="" cols="30" rows="10" placeholder="Body: Your flight has been cancelled 😱😱😱"></textarea>
-        <button>Send Me</button>
-    </form>
+
+<!-- Materialize CSS Navbar -->
+<div class="navbar-fixed">
+<nav class="grey darken-3">
+<div class="nav-wraper">
+<div class="container">
+<a href="#" class="brand-logo">
+<!-- Brand Logo Icon Materialize CSS -->
+<span class="material-icons-outlined">
+    The Creative Creators
+</span>
+</a>
 </div>
-<script>
-    function makeid() {
-        var text = "";
-        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+</div>
+</nav> 
+</div>
+<div class="container">
+<h1 class="center">
+Web Push Notifications Service
+</h1>
 
-        for (var i = 0; i < 5; i++)
-            text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-        return text;
-    }
-    window.rule = makeid();
-</script>
-<script src="{% static '/js/registerSw.js' %}"></script>
-<script src="{% static '/js/site.js' %}"></script>
+<!-- Photo credit to James Eades -->
+<img class="responsive-img" src="https://www.digitalvidya.com/wp-content/uploads/2017/07/Web_Push_Notification.jpg" alt="Web Push Notifications">
+<!-- Change me -->
+<!-- Change me -->
+</div> 
+</div>
 </body>
 </html>
